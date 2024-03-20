@@ -1,0 +1,196 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ThinhStoreWF.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+        <%: Scripts.Render("~/Scripts/js/jquery-3.5.1.min.js") %>
+        <%: Scripts.Render("~/Scripts/js/data.js") %>
+        <%: Scripts.Render("~/Scripts/js/index_script.js") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+
+    <link rel="stylesheet" href="<%= ResolveUrl("~/Content/style/font/font-awesome-4.7.0/css/font-awesome.min.css") %>">
+    <link rel="stylesheet" href="<%= ResolveUrl("~/Scripts/bootstrap/bootstrap.min.css") %>">
+
+    <script src="<%= ResolveUrl("~/Scripts/bootstrap/popper.min.js") %>"></script>
+    <script src="<%= ResolveUrl("~/Scripts/bootstrap/bootstrap.min.js") %>"></script>
+
+    <link href="<%= ResolveUrl("~/Content/style/product-detail_style.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%= ResolveUrl("~/Content/style/cart_style.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%= ResolveUrl("~/Content/style/style.css") %>" rel="stylesheet" type="text/css" />
+    <link href="~/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form runat="server">
+
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <header>
+            <asp:Literal ID="ltScript" runat="server"></asp:Literal>
+            <a class="top_header" href="/">
+                <svg class="icon-logo-star" width="25px" height="25px" viewBox="0 0 362.62 388.52" data-spin-me="false">
+                <path d="M156.58,239l-88.3,64.75c-10.59,7.06-18.84,11.77-29.43,11.77-21.19,0-38.85-18.84-38.85-40C0,257.83,14.13,244.88,27.08,239l103.6-44.74L27.08,148.34C13,142.46,0,129.51,0,111.85,0,90.66,18.84,73,40,73c10.6,0,17.66,3.53,28.25,11.77l88.3,64.75L144.81,44.74C141.28,20,157.76,0,181.31,0s40,18.84,36.5,43.56L206,149.52l88.3-64.75C304.93,76.53,313.17,73,323.77,73a39.2,39.2,0,0,1,38.85,38.85c0,18.84-12.95,30.61-27.08,36.5L231.93,194.26,335.54,239c14.13,5.88,27.08,18.83,27.08,37.67,0,21.19-18.84,38.85-40,38.85-9.42,0-17.66-4.71-28.26-11.77L206,239l11.77,104.78c3.53,24.72-12.95,44.74-36.5,44.74s-40-18.84-36.5-43.56Z"></path>
+                </svg>
+                <h3>Phong Lưu Store</h3>
+            </a>
+            <script>
+            </script>
+            <nav>
+                <ul>
+                    <li>
+                        <div style="display: block;
+                        background-color: #fff;
+                        border-radius: 10px;
+                        position: relative;" class="top_search">
+                            <span clas="search_form">
+                                <input style="background-color: transparent;
+                                border: 0;
+                                border: 2px solid transparent;
+                                border-radius: 10px;
+                                font-size: 16px;
+                                height: 35px;
+                                padding: 5px 47px 5px 12px;
+                                transition: border-color .2s ease-in-out;
+                                width: 100%;
+                                border: 0;
+                                background-color: transparent;" class="search_input" type="text" placeholder="Bạn cần tìm gì..." autocomplete="off" title="Bạn cần tìm gì..." value=""/>
+                                <button style="cursor: pointer;
+                                line-height: 0;
+                                position: absolute;
+                                right: 10px;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                background-color: transparent;
+                                border: 0;
+                                outline: none;">
+                                    <svg width="20" height="20" viewBox="0 0 16 16" fill="#333">
+                                        <path d="M15.504 13.616l-3.79-3.223c-0.392-0.353-0.811-0.514-1.149-0.499 0.895-1.048 1.435-2.407 1.435-3.893 0-3.314-2.686-6-6-6s-6 2.686-6 6 2.686 6 6 6c1.486 0 2.845-0.54 3.893-1.435-0.016 0.338 0.146 0.757 0.499 1.149l3.223 3.79c0.552 0.613 1.453 0.665 2.003 0.115s0.498-1.452-0.115-2.003zM6 10c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z"></path>
+                                    </svg>
+                                </button>
+                            </span>
+                        </div>
+                    </li>
+                    
+                    <%--<li class="dropdown">
+                        <a href="#">
+                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                            Sản phẩm
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#acer">ACER</a>
+                            <a href="#asus">ASUS</a>
+                            <a href="#msi">MSI</a>
+                            <a href="#accessory">PHỤ KIỆN</a>
+                            <!-- Thêm các nhóm sản phẩm khác tại đây -->
+                        </div>
+                    </li>--%>
+                    
+                    <li>
+                        <a href="/Views/Support.aspx">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            Liên hệ
+                        </a>
+                    </li>
+                    <li style="margin-right: 40px">
+                        <a href="/Views/Cart.aspx">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            Giỏ hàng
+                            <span runat="server" id="cartQuantity" style="
+                                background: red;
+                                border-radius: 999px;
+                                padding: 2px 4px;
+                                position: absolute;
+                                top: -6px;
+                                right: -16px;
+                                font-size: 10px;
+                                min-width: 18px;
+                            ">0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Views/Invoice.aspx">
+                            <i class="fa fa-money" aria-hidden="true"></i> 
+                            Lịch sử giao dịch
+                        </a>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hplManageProduct" NavigateUrl="/Views/ManageProducts.aspx" runat="server" Visible="false">
+                            <i class="fa fa-archive" aria-hidden="true"></i>
+                            Quản lý sản phẩm
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:Literal ID="ltrUsername" runat="server" Visible="false">
+                        </asp:Literal>
+                    </li>
+                    <li>
+                        <asp:Button ID="btnLoginRegister" CssClass="btn btn-primary" runat="server" Text="Đăng Nhập" OnClick="btnLoginRegister_Click" Visible="false" />
+                        <asp:Button ID="btnLogout" CssClass="btn btn-primary" runat="server" Text="Đăng Xuất" OnClick="btnLogout_Click" Visible="false" />
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <footer>
+            <p>Bản quyền © 2024 Phong Lưu Store</p>
+        </footer>
+
+        <div class="scroll">
+
+            <ul>
+                <li class="zalo-btn">
+                    <a href="https://zaloweb.me/" target="_blank">
+                        <img src="/img/icon/icon-zalo.webp" alt="zalo">
+                        Chat Zalo
+		        </a>
+                </li>
+                <li class="phone-mobile">
+                    <a href="tel:0123456789" class="button">
+                        <img src="/img/icon/icon-hotline.webp" alt="hotline">
+                        Hotline
+		        </a>
+                </li>
+                <li class="messenger-btn">
+                    <a href="https://m.me/hungvuonguni" target="_blank">
+                        <img src="/img/icon/icon-mess.webp" alt="Messenger">
+                        Messenger
+		        </a>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+    </asp:PlaceHolder>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
