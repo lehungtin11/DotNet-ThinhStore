@@ -1,4 +1,4 @@
-# Event Planner App
+# ThinhStore
 
 ## Description
 
