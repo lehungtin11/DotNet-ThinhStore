@@ -27,7 +27,7 @@ cd ThinhStoreWF
 ```
 **3. Open file "fullScript.sql" to create database and insert data**
 
-**4. Open solution and change config database at line 16 in file "Web.config" **
+**4. Open solution and change config database at line 16 in file "Web.config"**
 
 **5. Usage**
 
