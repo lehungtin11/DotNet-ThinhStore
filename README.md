@@ -1,4 +1,4 @@
-# ThinhStore
+# ThinhStore WF
 
 ## Description
 
